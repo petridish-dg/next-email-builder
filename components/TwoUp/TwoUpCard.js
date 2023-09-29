@@ -9,19 +9,20 @@ import {
 } from "@/data/filterData";
 
 export default function TwoUpCard({ dataIn }) {
+  // Import data from Supabase
   let data = dataIn;
-  const [filters, setFilters] = useState({
-    year: "ALL",
-    type: "ALL",
-  });
 
+  // States
+  const [filters, setFilters] = useState({year: "", type: ""});
   const [filteredJourneys, setFilteredJourneys] = useState([]);
   const [journeyDropText, setJourneyDropText] = useState("Select Journey");
   const [selectedJourney, setSelectedJourney] = useState("");
 
   // Filter Journeys(data)
   useEffect(() => {
+    // Log filters
     console.log("Filters:", filters);
+    // Filter data
     const filteredData = data.filter((journey) => {
       const yearFilter =
         filters.year === "ALL" || journey.year === filters.year;
@@ -29,18 +30,22 @@ export default function TwoUpCard({ dataIn }) {
         filters.type === "ALL" || journey.type === filters.type;
       return yearFilter && typeFilter;
     });
+
+    // Log filtered data
     console.log("Filtered Data:", filteredData);
+
+    // Set filtered data
     setFilteredJourneys(filteredData);
   }, [data, filters]); // Re-run this effect when data or filters change
 
   // Select Journey
-  function selectJourney() {}
+  function selectJourney(e) {}
 
   const yearFilterDropdown = {
     id: filters.year,
-    value: filters.label,
-    label: "Year",
-    options: filterOptionsYear,
+    value: filterOptionsYear.find((option) => option.value === filters.year),
+    label: "Year: ",
+    options: filterOptionsYear.map((option) => option.label),
     onChange: (e) => {
       setFilters({ ...filters, year: e.target.value });
     },
@@ -48,9 +53,9 @@ export default function TwoUpCard({ dataIn }) {
 
   const typeFilterDropdown = {
     id: filters.type,
-    value: filters.type,
-    label: "Product Type",
-    options: ["ALL", ...productTypes],
+    value: filterOptionsType.find((option) => option.value === filters.type),
+    label: "Product Type: ",
+    options: filterOptionsType.map((option) => option.label),
     onChange: (e) => {
       setFilters({ ...filters, type: e.target.value });
     },
@@ -63,7 +68,7 @@ export default function TwoUpCard({ dataIn }) {
   //   placeholder: journeyDropText,
   //   options: filteredJourneys.map((journey) => journey.name),
   //   onChange: (e) => {
-  //     setJourney(e.target.value);
+  //     selectJourney(e.target.value);
   //   },
   // };
 
