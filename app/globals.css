@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+main {
+    height: calc(100% - 60px);
+    display: grid;
+    grid-template-columns: minmax(500px, 0.3fr) 0.7fr;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+}
+
+select {
+    width: 100%;
+    padding: 0.25rem;
+}
+
+h2 {
+    font-size: 1.15rem;
+}
+
+input,
+select,
+option,
+button {
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    border-left: 1px solid black;
+}

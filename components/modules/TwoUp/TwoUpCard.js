@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Dropdown from "../ui/Dropdown";
+import Dropdown from "../../ui/Dropdown";
 import {
     productTypes,
     filterOptionsYear,
@@ -66,7 +66,7 @@ export default function TwoUpCard({ dataIn }) {
     const yearFilterDropdown = {
         id: filters.year,
         value: filters.year,
-        label: "Year: ",
+        label: "Select Year: ",
         options: filterOptionsYear.map((option) => option.label),
         onChange: (e) => {
             setFilters({ ...filters, year: e.target.value });
@@ -76,7 +76,7 @@ export default function TwoUpCard({ dataIn }) {
     const typeFilterDropdown = {
         id: filters.type,
         value: filters.type,
-        label: "Type: ",
+        label: "Select Type: ",
         options: filterOptionsType.map((option) => option.label),
         onChange: (e) => {
             setFilters({ ...filters, type: e.target.value });
@@ -86,7 +86,7 @@ export default function TwoUpCard({ dataIn }) {
     const journeyDropdown = {
         id: selectedJourney,
         value: selectedJourney,
-        label: "Journey: ",
+        label: "Select Journey: ",
         options: filteredJourneys.map(
             (journey) => journey.name + " " + `(${journey.year})`
         ),

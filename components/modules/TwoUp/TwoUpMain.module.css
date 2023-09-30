@@ -1,0 +1,11 @@
+.twoup-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.twoup-pair {
+    display: flex;
+    gap: 0.25rem;
+    justify-content: space-between;
+}
