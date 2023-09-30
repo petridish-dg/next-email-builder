@@ -1,0 +1,23 @@
+.dropdown {
+    display: grid;
+    grid-template-columns: 0.2fr 0.8fr;
+    align-items: center;
+    justify-content: space-between;
+}
+
+label {
+    font-size: 0.85rem;
+}
+
+select {
+    width: 100%;
+    padding: 0.25rem;
+}
+
+button,
+option,
+select,
+input,
+textarea {
+    cursor: pointer;
+}

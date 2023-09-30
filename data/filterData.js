@@ -1,8 +1,8 @@
 // Year Filter
 const filterOptionsYear = [
-    { value: null, label: "ALL" },
-    { value: 2023, label: "2023" },
-    { value: 2024, label: "2024" },
+    { value: "ALL", label: "ALL" },
+    { value: "2023", label: "2023" },
+    { value: "2024", label: "2024" },
 ];
 
 // Product Type Filter
