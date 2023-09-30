@@ -51,12 +51,13 @@ export default function TwoUpCard({ dataIn }) {
 
     // Select Journey
     function selectJourney(selectedValue) {
+        // Set the selected journey
         setSelectedJourney(selectedValue);
 
-        // Find the selected journey in the data array based on its UUID
-        const selectedJourneyObject = data.find(
-            (journey) => journey.UUID === selectedValue
-        );
+        // Find the selected journey object
+        let selectedJourneyObject = data.filter((journey) => {
+            journey.name + " " + `(${journey.year})` === selectedValue;
+        });
 
         // Log the selected journey data
         console.log("selectedJourneyData: ", selectedJourneyObject);
