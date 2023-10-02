@@ -28,7 +28,7 @@ export default async function TwoUpMain() {
     }
 
     return (
-        <ModuleCard title="Two Up - Journeys">
+        <ModuleCard title="TwoUp - Journeys" description="Image size (590x370)">
             <div className={styles["twoup-main"]}>
                 <TwoUpPair dataIn={data} />
                 <Button text="Add" />
