@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import TwoUpCard from "./TwoUpCard";
 import styles from "./TwoUpMain.module.css";
 import Button from "@/components/ui/Button";
+import ModuleCard from "../ModuleCard/ModuleCard";
 
 const TwoUpPair = ({ dataIn }) => {
     return (
@@ -27,9 +28,11 @@ export default async function TwoUpMain() {
     }
 
     return (
-        <div className={styles["twoup-main"]}>
-            <TwoUpPair dataIn={data} />
-            <Button text="Add" onClick={handleAddClick} />
-        </div>
+        <ModuleCard title="Two Up - Journeys">
+            <div className={styles["twoup-main"]}>
+                <TwoUpPair dataIn={data} />
+                <Button text="Add" />
+            </div>
+        </ModuleCard>
     );
 }

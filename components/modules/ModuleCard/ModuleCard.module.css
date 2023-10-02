@@ -1,0 +1,22 @@
+.module-card {
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+}
+
+.module-card__header {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    padding-bottom: 1rem;
+}
+
+.module-card__header h2 {
+    font-weight: 500;
+}
+
+.module-card__header p {
+    font-size: .85rem;
+    color: rgb(203, 203, 203)
+}

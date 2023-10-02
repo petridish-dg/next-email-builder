@@ -37,6 +37,10 @@ button {
     cursor: pointer;
 }
 
+button {
+    padding: .5rem .5rem;
+}
+
 ::-webkit-scrollbar {
     width: 12px;
     border-left: 1px solid black;

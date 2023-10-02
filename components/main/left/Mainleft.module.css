@@ -1,10 +1,15 @@
-.main-left {
+.box-left {
     height: 100%;
     border-right: 1px solid black;
-    padding: 1rem;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
 }
 
-::-webkit-scrollbar {
-    width: 0.5rem;
+.box-left > div {
+    border-bottom: 1px dashed rgb(120, 120, 120);
+}
+
+.box-left > div:last-child {
+    border-bottom: none;
 }
