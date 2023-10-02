@@ -2,6 +2,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import TwoUpCard from "./TwoUpCard";
 import styles from "./TwoUpMain.module.css";
+import Button from "@/components/ui/Button";
 
 const TwoUpPair = ({ dataIn }) => {
     return (
@@ -21,10 +22,14 @@ export default async function TwoUpMain() {
         console.log("Data fetched from Supabase");
     }
 
+    function handleAddClick() {
+        console.log("Add button clicked");
+    }
+
     return (
         <div className={styles["twoup-main"]}>
             <TwoUpPair dataIn={data} />
-            <button>+</button>
+            <Button text="Add" onClick={handleAddClick} />
         </div>
     );
 }
