@@ -22,13 +22,20 @@ export default function TwoUpMain() {
         setTwoUpArray([...twoUpArray, <TwoUpPair />]);
     }
 
+    function handleSubtractClick() {
+        setTwoUpArray(twoUpArray.slice(0, -1));
+    }
+
     return (
         <ModuleCard title="TwoUp - Journeys" description="Image size (590x370)">
             <div className={styles["twoup-main"]}>
                 {twoUpArray.map((pair) => {
                     return pair;
                 })}
-                <Button onClick={handleAddClick} text={"+"}/>
+                <div>
+                    <Button onClick={handleSubtractClick} text={"-"} />
+                    <Button onClick={handleAddClick} text={"+"} />
+                </div>
             </div>
         </ModuleCard>
     );
