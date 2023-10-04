@@ -1,19 +1,21 @@
-"use client";
+'use client'
 
 import { useState, useEffect } from "react";
 import Dropdown from "../../ui/Dropdown";
+
 import {
-    productTypes,
     filterOptionsYear,
     filterOptionsType,
 } from "@/data/filterData";
+import { getData } from "@/app/api/route";
 import styles from "./TwoUpCard.module.css";
 
-export default function TwoUpCard({ dataIn }) {
-    // Import data from Supabase
-    let data = dataIn;
+
+export default function TwoUpCard(  {dataIn} ) {
+
 
     // States
+    const [data, setData] = useState(dataIn);
     const [filters, setFilters] = useState({ year: "", type: "" });
     const [filteredJourneys, setFilteredJourneys] = useState([]);
     const [selectedJourney, setSelectedJourney] = useState("");
@@ -21,33 +23,40 @@ export default function TwoUpCard({ dataIn }) {
     // Selected Journey data
     let selectedJourneyData;
 
-    // Filter Journeys(data)
+    // Fetch data using getData
     useEffect(() => {
-        // Log filters
-        console.log("Filters:", filters);
-        // Filter data
-        const filteredData = data.filter((journey) => {
-            console.log("Journey Year:", typeof journey.year);
-            console.log("Filter Year:", typeof filters.year);
+        async function fetchData() {
+            const fetchedData = await getData();
+            if (fetchedData) {
+                setData(fetchedData);
+            }
+        }
 
-            // Check if the "year" filter is set and the journey's year matches
-            const yearFilterMatch =
-                !filters.year || journey.year.toString() === filters.year;
+        fetchData();
+    }, []);
 
-            // Check if the "type" filter is set and the journey's type matches
-            const typeFilterMatch =
-                !filters.type || journey.type === filters.type;
 
-            // Return true if both filters match (or if no filters are set)
-            return yearFilterMatch && typeFilterMatch;
-        });
+    // Filter data by checking if data is loaded after first uE
+    useEffect(() => {
+        if (data && data.length > 0) {
+            // Filter data
+            const filteredData = data.filter((journey) => {
+                // Check if the "year" filter is set and the journey's year matches
+                const yearFilterMatch =
+                    !filters.year || journey.year.toString() === filters.year;
 
-        // Log filtered data
-        console.log("Filtered Data:", filteredData);
+                // Check if the "type" filter is set and the journey's type matches
+                const typeFilterMatch =
+                    !filters.type || journey.type === filters.type;
 
-        // Set filtered data
-        setFilteredJourneys(filteredData);
-    }, [data, filters]); // Re-run this effect when data or filters change
+                // Return true if both filters match (or if no filters are set)
+                return yearFilterMatch && typeFilterMatch;
+            });
+
+            // Set filtered data
+            setFilteredJourneys(filteredData);
+        }
+    }, [data, filters]);
 
     // Select Journey
     function selectJourney(selectedValue) {
@@ -55,8 +64,8 @@ export default function TwoUpCard({ dataIn }) {
         setSelectedJourney(selectedValue);
 
         // Find the selected journey object
-        let selectedJourneyObject = data.filter((journey) => {
-            journey.name + " " + `(${journey.year})` === selectedValue;
+        let selectedJourneyObject = data.find((journey) => {
+            return journey.name + " " + `(${journey.year})` === selectedValue;
         });
 
         // Log the selected journey data
@@ -103,3 +112,4 @@ export default function TwoUpCard({ dataIn }) {
         </div>
     );
 }
+

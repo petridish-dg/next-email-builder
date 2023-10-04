@@ -1,38 +1,37 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+"use client";
+
 import TwoUpCard from "./TwoUpCard";
 import styles from "./TwoUpMain.module.css";
-import Button from "@/components/ui/Button";
 import ModuleCard from "../ModuleCard/ModuleCard";
+import { useState } from "react";
+import Button from "@/components/ui/Button";
 
-const TwoUpPair = ({ dataIn }) => {
+const TwoUpPair = () => {
     return (
         <div className={styles["twoup-pair"]}>
-            <TwoUpCard dataIn={dataIn} />
-            <TwoUpCard dataIn={dataIn} />
+            <TwoUpCard />
+            <TwoUpCard />
         </div>
     );
 };
 
-export default async function TwoUpMain() {
-    const supabase = createServerComponentClient({ cookies });
-    const { data, error } = await supabase.from("akXml").select("*");
-    if (error) {
-        console.log("Could not fetch data from Supabase");
-    } else {
-        console.log("Data fetched from Supabase");
-    }
+export default function TwoUpMain() {
+    const [twoUpArray, setTwoUpArray] = useState([<TwoUpPair />]);
 
     function handleAddClick() {
-        console.log("Add button clicked");
+        setTwoUpArray([...twoUpArray, <TwoUpPair />]);
     }
 
     return (
         <ModuleCard title="TwoUp - Journeys" description="Image size (590x370)">
             <div className={styles["twoup-main"]}>
-                <TwoUpPair dataIn={data} />
-                <Button text="Add" />
+                {twoUpArray.map((pair) => {
+                    return pair;
+                })}
+                <Button onClick={handleAddClick} text={"+"}/>
             </div>
         </ModuleCard>
     );
 }
+
+export { TwoUpPair };
