@@ -11,7 +11,7 @@ body {
 main {
     height: calc(100% - 60px);
     display: grid;
-    grid-template-columns: minmax(500px, 0.3fr) 0.7fr;
+    grid-template-columns: minmax(500px, 0.3fr) 1fr;
 }
 
 label {
@@ -42,7 +42,12 @@ input[type="text"] {
 }
 
 button {
-    padding: .5rem .5rem;
+    padding: .5rem .75rem;
+}
+
+.btn-outline {
+    border: 1px solid black;
+    background-color: transparent;
 }
 
 ::-webkit-scrollbar {

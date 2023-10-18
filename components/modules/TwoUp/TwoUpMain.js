@@ -33,8 +33,8 @@ export default function TwoUpMain() {
                     return pair;
                 })}
                 <div>
-                    <Button onClick={handleSubtractClick} text={"-"} />
-                    <Button onClick={handleAddClick} text={"+"} />
+                    <Button onClick={handleSubtractClick} text={"-"}/>
+                    <Button onClick={handleAddClick} text={"+"}/>
                 </div>
             </div>
         </ModuleCard>
