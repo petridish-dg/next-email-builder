@@ -1,7 +1,9 @@
 import { atom, useAtom } from 'jotai';
+import OneUpPreview from './../components/modules/OneUp/OneUpPreview';
+
 
 // Create an atom to hold the selected two ups array
-export const selectedTwoUpsAtom = atom([]);
+export const selectedTwoUpsAtom = atom([<OneUpPreview />, <OneUpPreview />]);
 
 // Create a function to add a two up to the selected array
 export const addSelectedTwoUp = atom(null, (get, set, twoUp) => {

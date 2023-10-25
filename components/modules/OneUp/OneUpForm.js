@@ -2,23 +2,20 @@
 
 import Input from "@/components/ui/Input";
 import TextArea from "@/components/ui/TextArea";
-import { useState } from "react";
 
 export default function OneUpForm() {
-    const [imgUrl, setImgUrl] = useState("");
-    const [introParagraph, setIntroParagraph] = useState("");
-    const [buttonText, setButtonText] = useState("");
-    const [buttonLink, setButtonLink] = useState("");
-
-    function handleChange() {
-        console.log("Change")
+    const [imageURL, setImageURL] = useState('');
+    
+    function handleInputChange(e) {
+        console.log(e.target.value);
     }
 
     return (
         <>
-            <Input name="Image URL" placeholder="https://example.com/assets/peter.png"/>
-            <TextArea name="Intro Paragraph"/>
-            <Input name="Button Text" placeholder="Click Here"/>
+            <Input name="Image URL" placeholder="https://example.com/assets/peter.png" onchange={handleInputChange}/>
+            <Input name="Heading" placeholder="Relive Your Inspiring Greek Isles Expedition" onchange={handleInputChange}/>
+            <TextArea name="Intro Paragraph" onchange={handleInputChange}/>
+            <Input name="Button Text" placeholder="Click Here" onchange={handleInputChange}/>
         </>
     );
 }
