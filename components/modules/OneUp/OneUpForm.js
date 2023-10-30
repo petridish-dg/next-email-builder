@@ -2,12 +2,21 @@
 
 import Input from "@/components/ui/Input";
 import TextArea from "@/components/ui/TextArea";
+import {atom, useAtom } from "jotai";
 
 export default function OneUpForm() {
-    const [imageURL, setImageURL] = useState('');
+    const imageURLAtom = atom('');
+    const headingAtom = atom('');
+    const introAtom = atom('');
+    const button = atom({text: '', url: ''});
+    const [imageURL, setImageURL] = useAtom(imageURLAtom);
+    const [heading, setHeading] = useAtom(headingAtom);
+    const [intro, setIntro] = useAtom(introAtom);
+    const [buttonText, setButtonText] = useAtom(button.text);
+    const [buttonURL, setButtonURL] = useAtom(button.url);
     
-    function handleInputChange(e) {
-        console.log(e.target.value);
+    function handleInputChange(inputLabel, e) {
+        
     }
 
     return (
